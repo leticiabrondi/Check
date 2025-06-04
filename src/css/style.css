@@ -1,0 +1,438 @@
+/* ------------------------------------
+   Variáveis globais - Paleta de cores
+------------------------------------ */
+:root {
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --primary: #1e3a8a;
+  --secondary: #e0e7ff;
+  --success: #10b981;
+  --warning: #facc15;
+  --danger: #ef4444;
+  --white: #ffffff;
+  --border-radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --font: 'Inter', sans-serif;
+  --transition: all 0.3s ease-in-out;
+}
+
+/* -------------------------
+   Reset básico e estrutura
+-------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/* -------------------------
+   Container principal
+-------------------------- */
+.container {
+  width: 100%;
+  max-width: 700px;
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------------
+   Título principal
+-------------------------- */
+h1 {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* -------------------------
+   Inputs e formulário
+-------------------------- */
+.grupo-input {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.70rem;
+}
+
+.grupo-input input,
+.grupo-input select,
+.grupo-input button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.grupo-input input[type="text"] {
+  flex: 1.5;
+}
+
+.grupo-input select,
+.grupo-input input[type="date"] {
+  flex: 1;
+}
+
+.grupo-input button {
+  flex: 0 0 auto; /* Impede o botão de quebrar a linha */
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.grupo-input button:hover {
+  background-color: #172554;
+}
+
+/* -------------------------
+   Checkbox customizado
+-------------------------- */
+
+/* Remove o estilo padrão do checkbox para customização */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2.5px solid var(--primary);
+  border-radius: 6px;
+  background-color: var(--white);
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  vertical-align: middle;
+  margin-right: 0.75rem; /* Espaçamento entre checkbox e texto */
+}
+
+/* Hover deixa a borda mais escura */
+input[type="checkbox"]:hover {
+  border-color: #134e8a; /* tom mais escuro do var(--primary) */
+}
+
+/* Foco visível para acessibilidade */
+input[type="checkbox"]:focus-visible {
+  outline: 3px solid #a5b4fc; /* lilás claro */
+  outline-offset: 2px;
+}
+
+/* Estado marcado - altera background e borda */
+input[type="checkbox"]:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Checkmark customizado via ::after */
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 16px;
+  border-style: solid;
+  border-color: var(--white);
+  border-width: 0 3.5px 3.5px 0;
+  transform: translate(-50%, -55%) rotate(45deg);
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  box-sizing: content-box;
+}
+
+/* Antes de marcado, checkmark invisível */
+input[type="checkbox"]::after {
+  opacity: 0;
+}
+
+/* Estilo do label para melhor alinhamento com checkbox */
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  color: var(--text);
+  gap: 0.5rem;
+}
+
+/* -------------------------
+   Filtros
+-------------------------- */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.botao-filtro {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primary);
+  background-color: var(--white);
+  color: var(--primary);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.botao-filtro.ativo,
+.botao-filtro:hover {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+/* -------------------------
+   Lista de tarefas
+-------------------------- */
+.lista-tarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+}
+
+.lista-tarefas li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  border-left: 6px solid transparent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.lista-tarefas li:hover {
+  background-color: #e2e8f0;
+  transform: scale(1.01);
+}
+
+/* Cores por prioridade */
+.lista-tarefas li[data-prioridade="alta"] {
+  border-color: var(--danger);
+}
+
+.lista-tarefas li[data-prioridade="media"] {
+  border-color: var(--warning);
+}
+
+.lista-tarefas li[data-prioridade="baixa"] {
+  border-color: var(--success);
+}
+
+.lista-tarefas li.concluida {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+/* Estilo botão para tarefa concluída */
+.lista-tarefas li.concluida .botao-editar,
+.lista-tarefas li.concluida .botao-remover {
+  opacity: 0.5;
+  pointer-events: none; /* Desabilita clique nos botões quando concluído */
+}
+
+/* -------------------------
+   Estatísticas
+-------------------------- */
+.estatisticas {
+  text-align: center;
+  font-size: 1rem;
+  color: #475569;
+  font-weight: 500;
+  background: var(--secondary);
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+}
+
+/* -------------------------
+   Responsividade
+-------------------------- */
+@media (max-width: 600px) {
+  .grupo-input {
+    flex-direction: column;
+  }
+
+  .grupo-input input,
+  .grupo-input select,
+  .grupo-input button {
+    width: 100%;
+  }
+
+  .filtros {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botao-filtro {
+    width: 100%;
+  }
+}
+
+/* -------------------------
+   Botão de alternância de tema
+-------------------------- */
+#botao-tema {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+#botao-tema:hover {
+  transform: scale(1.2);
+}
+
+/* -------------------------
+   Modo escuro
+-------------------------- */
+body.escuro {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --primary: #7c3aed;
+  --secondary: #312e81;
+  --success: #10b981;
+  --warning: #facc15;
+  --danger: #f87171;
+  --card-bg: #1e293b;
+  --card-hover: #334155;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Ajustes no modo escuro */
+body.escuro .container {
+  background-color: var(--card-bg);
+}
+
+body.escuro .lista-tarefas li {
+  background-color: var(--card-bg);
+  color: var(--text);
+}
+
+body.escuro .lista-tarefas li:hover {
+  background-color: var(--card-hover);
+}
+
+body.escuro .grupo-input input,
+body.escuro .grupo-input select {
+  background-color: #1e293b;
+  color: var(--text);
+  border-color: #475569;
+}
+
+body.escuro .grupo-input button {
+  background-color: var(--primary);
+  color: white;
+}
+
+body.escuro .botao-filtro {
+  background-color: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+body.escuro .botao-filtro.ativo,
+body.escuro .botao-filtro:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+body.escuro .estatisticas {
+  color: #cbd5e1;
+}
+
+body.escuro #botao-tema {
+  color: var(--primary);
+}
+
+/* -------------------------
+   Campos de data e botões
+-------------------------- */
+input[type="date"] {
+  flex: 1;
+  font-family: var(--font);
+  color: var(--text);
+  background-color: var(--white);
+  border: 1px solid #cbd5e1;
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1rem;
+  transition: var(--transition);
+}
+
+body.escuro input[type="date"] {
+  background-color: #1e293b;
+  color: var(--text);
+  border-color: #475569;
+}
+
+/* Conteúdo interno da tarefa */
+.conteudo-tarefa {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.25rem;
+}
+
+/* Data limite */
+.data-limite {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--cor-secundaria);
+  margin-top: 4px;
+}
+
+/* Botões de edição e remoção */
+.botao-editar,
+.botao-remover {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: var(--primary);
+}
+
+.botao-editar:hover,
+.botao-remover:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+body.escuro .botao-editar,
+body.escuro .botao-remover {
+  color: var(--primary);
+}
